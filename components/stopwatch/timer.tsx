@@ -9,7 +9,6 @@ interface TimerProps {
 export const Timer: React.FunctionComponent<TimerProps> = (
   props: TimerProps
 ) => {
-  console.log("TBDT PROPS", Math.sign(props.time));
   return (
     <View style={styles.container}>
       <Text>

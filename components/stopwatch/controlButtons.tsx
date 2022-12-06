@@ -7,6 +7,7 @@ interface ControlButtonsProps {
   handleStart: () => void;
   handleReset: () => void;
   handlePauseResume: () => void;
+  handleDelayToggle: () => void;
   isPaused: boolean;
   active: boolean;
 }
@@ -19,7 +20,10 @@ export const ControlButtons: React.FunctionComponent<ControlButtonsProps> = (
   };
 
   const StartButton = (
-    <Button title="Start" type="clear" onPress={props.handleStart} />
+    <View>
+      <Button title="Start" type="clear" onPress={props.handleStart} />
+      <Button title="Delay" type="solid" onPress={props.handleDelayToggle} />
+    </View>
   );
   const ActiveButtons = (
     <View>

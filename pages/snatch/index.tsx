@@ -22,7 +22,7 @@ export const SnatchPage: React.FunctionComponent<SnatchPageProps> = (
       <Button title="Full Screen" type="clear" />
       <Text>Series 1 of 5</Text>
       <Text>Kettlebell Snatches</Text>
-      <StopWatch delayMilli={9000} totalTimeMilli={totalTime()} />
+      <StopWatch totalTimeMilli={totalTime()} />
     </View>
   );
 };
