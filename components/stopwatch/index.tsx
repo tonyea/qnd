@@ -42,6 +42,11 @@ export const StopWatch: React.FunctionComponent<StopWatchProps> = (
             else if (matchedTime.setType === "two")
               Speech.speak(props.beginSetSpeechTwo); // if type two set
           }
+          // finish timer
+          if (interval && time === props.totalTimeMilli) {
+            clearInterval(interval);
+            return time;
+          }
           return time + 10;
         });
       }, 10);

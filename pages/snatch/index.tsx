@@ -12,7 +12,7 @@ export const SnatchPage: React.FunctionComponent<SnatchPageProps> = (
   props: SnatchPageProps
 ) => {
   const totalTime = useCallback(() => {
-    return props.sets * 4 * 60 * 1000; // each snatch set is 4 minutes
+    return 3000 // props.sets * 4 * 60 * 1000 - 120000; // each snatch set is 4 minutes less 2 minutes for last session rest
   }, [props.sets]);
 
   const alertTimes = useCallback(() => {
