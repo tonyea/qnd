@@ -28,6 +28,14 @@ export const SnatchPage: React.FunctionComponent<SnatchPageProps> = (
           intervalStartTime + 90000
         );
       }
+    } else if (props.variant === "ten") {
+      for (let i = 0; i <= props.sets - 1; i++) {
+        const intervalStartTime = i * 4 * 60 * 1000; // in milliseconds
+        alertIntervals.push(
+          intervalStartTime,
+          intervalStartTime + 60000,
+        );
+      }
     }
     return alertIntervals;
   }, [props.sets]);
