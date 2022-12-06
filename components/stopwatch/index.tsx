@@ -2,25 +2,40 @@ import React, { useState, useEffect } from "react";
 import { View } from "react-native";
 import { ControlButtons } from "./controlButtons";
 import { Timer } from "./timer";
+import * as Speech from "expo-speech";
 
 interface StopWatchProps {
   totalTimeMilli: number; // in milliseconds
+  alertTimes: number[]; // in milliseconds
+  beginSetSpeech: string;
 }
 
 export const StopWatch: React.FunctionComponent<StopWatchProps> = (
   props: StopWatchProps
 ) => {
+  console.log("TBDT 10", props.alertTimes);
   const [isActive, setIsActive] = useState(false);
   const [isPaused, setIsPaused] = useState(true);
   const [time, setTime] = useState(0);
-  const [delay, setDelay] = useState(9000); // default delay 9 seconds
+  const [delay, setDelay] = useState(3000); // default delay 9 seconds
 
   useEffect(() => {
     let interval: ReturnType<typeof setInterval> | null = null;
 
-    if (isActive && isPaused === false) {
+    if (isActive && !isPaused) {
+      // every 10 milliseconds update the timer
       interval = setInterval(() => {
-        setTime((time) => time + 10);
+        setTime((time) => {
+          console.log(
+            "TBDT 100",
+            time - delay,
+            props.alertTimes.findIndex((at) => at === time - delay),
+            props.alertTimes
+          );
+          if (props.alertTimes.findIndex((at) => at === time - delay) >= 0)
+            Speech.speak(props.beginSetSpeech);
+          return time + 10;
+        });
       }, 10);
     } else {
       interval && clearInterval(interval);

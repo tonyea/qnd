@@ -63,7 +63,7 @@ export default function App() {
           style={styles.container}
           onLayout={onLayoutRootView}
         >
-          <SnatchPage sets={5} />
+          <SnatchPage sets={5} variant={"five"}/>
         </View>
       </ThemeProvider>
     </SafeAreaProvider>

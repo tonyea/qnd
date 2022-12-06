@@ -1,6 +1,5 @@
 import React from "react";
 import { View } from "react-native";
-import * as Speech from "expo-speech";
 import { Button } from "@rneui/themed";
 
 interface ControlButtonsProps {
@@ -14,11 +13,6 @@ interface ControlButtonsProps {
 export const ControlButtons: React.FunctionComponent<ControlButtonsProps> = (
   props: ControlButtonsProps
 ) => {
-  const speak = () => {
-    const thingToSay = "Start Snatches";
-    Speech.speak(thingToSay);
-  };
-
   const StartButton = (
     <View>
       <Button title="Start" type="clear" onPress={props.handleStart} />
