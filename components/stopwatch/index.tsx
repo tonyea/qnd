@@ -6,9 +6,15 @@ import * as Speech from "expo-speech";
 
 interface StopWatchProps {
   totalTimeMilli: number; // in milliseconds
-  alertTimes: number[]; // in milliseconds
-  beginSetSpeech: string;
+  alertTimes: IntervalType[]; // in milliseconds
+  beginSetSpeechOne: string;
+  beginSetSpeechTwo: string;
 }
+
+export type IntervalType = {
+  intervalTime: number;
+  setType: "one" | "two";
+};
 
 export const StopWatch: React.FunctionComponent<StopWatchProps> = (
   props: StopWatchProps
@@ -26,14 +32,16 @@ export const StopWatch: React.FunctionComponent<StopWatchProps> = (
       // every 10 milliseconds update the timer
       interval = setInterval(() => {
         setTime((time) => {
-          console.log(
-            "TBDT 100",
-            time - delay,
-            props.alertTimes.findIndex((at) => at === time - delay),
-            props.alertTimes
+          const matchedTime = props.alertTimes.find(
+            (at) => at.intervalTime === time - delay
           );
-          if (props.alertTimes.findIndex((at) => at === time - delay) >= 0)
-            Speech.speak(props.beginSetSpeech);
+          console.log("TBDT 100", time - delay, matchedTime, props.alertTimes);
+          if (matchedTime) {
+            if (matchedTime.setType === "one")
+              Speech.speak(props.beginSetSpeechOne); // if type one set
+            else if (matchedTime.setType === "two")
+              Speech.speak(props.beginSetSpeechTwo); // if type two set
+          }
           return time + 10;
         });
       }, 10);

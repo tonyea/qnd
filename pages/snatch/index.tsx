@@ -1,7 +1,7 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import { Text, View, StyleSheet } from "react-native";
-import { Button, Header } from "@rneui/themed";
-import { StopWatch } from "../../components/stopwatch";
+import { Header } from "@rneui/themed";
+import { IntervalType, StopWatch } from "../../components/stopwatch";
 
 interface SnatchPageProps {
   sets: number;
@@ -17,23 +17,25 @@ export const SnatchPage: React.FunctionComponent<SnatchPageProps> = (
 
   const alertTimes = useCallback(() => {
     // if five rep variant then sets start every 30 seconds
-    let alertIntervals: number[] = [];
+    let alertIntervals: IntervalType[] = [];
     if (props.variant === "five") {
       for (let i = 0; i <= props.sets - 1; i++) {
         const intervalStartTime = i * 4 * 60 * 1000; // in milliseconds
+        const setType = i % 2 === 0 ? "one" : "two";
         alertIntervals.push(
-          intervalStartTime,
-          intervalStartTime + 30000,
-          intervalStartTime + 60000,
-          intervalStartTime + 90000
+          { intervalTime: intervalStartTime, setType },
+          { intervalTime: intervalStartTime + 30000, setType },
+          { intervalTime: intervalStartTime + 60000, setType },
+          { intervalTime: intervalStartTime + 90000, setType }
         );
       }
     } else if (props.variant === "ten") {
       for (let i = 0; i <= props.sets - 1; i++) {
         const intervalStartTime = i * 4 * 60 * 1000; // in milliseconds
+        const setType = i % 2 === 0 ? "one" : "two";
         alertIntervals.push(
-          intervalStartTime,
-          intervalStartTime + 60000,
+          { intervalTime: intervalStartTime, setType },
+          { intervalTime: intervalStartTime + 60000, setType }
         );
       }
     }
@@ -50,7 +52,8 @@ export const SnatchPage: React.FunctionComponent<SnatchPageProps> = (
       <StopWatch
         totalTimeMilli={totalTime()}
         alertTimes={alertTimes()}
-        beginSetSpeech={"Snatch, five reps left handed"}
+        beginSetSpeechOne={"Snatch, five reps left handed"}
+        beginSetSpeechTwo={"Snatch, five reps right handed"}
       />
     </View>
   );
