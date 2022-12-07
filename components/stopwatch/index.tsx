@@ -14,12 +14,12 @@ interface StopWatchProps {
 export type IntervalType = {
   intervalTime: number;
   setType: "one" | "two";
+  readyTime: number;
 };
 
 export const StopWatch: React.FunctionComponent<StopWatchProps> = (
   props: StopWatchProps
 ) => {
-  console.log("TBDT 10", props.alertTimes);
   const [isActive, setIsActive] = useState(false);
   const [isPaused, setIsPaused] = useState(true);
   const [time, setTime] = useState(0);
@@ -35,12 +35,17 @@ export const StopWatch: React.FunctionComponent<StopWatchProps> = (
           const matchedTime = props.alertTimes.find(
             (at) => at.intervalTime === time - delay
           );
-          console.log("TBDT 100", time - delay, matchedTime, props.alertTimes);
+          const matchedReadyTime = props.alertTimes.find(
+            (at) => at.readyTime === time - delay
+          );
           if (matchedTime) {
             if (matchedTime.setType === "one")
               Speech.speak(props.beginSetSpeechOne); // if type one set
             else if (matchedTime.setType === "two")
               Speech.speak(props.beginSetSpeechTwo); // if type two set
+          }
+          if (matchedReadyTime) {
+            Speech.speak("ten seconds"); // alert ready
           }
           // finish timer
           if (interval && time === props.totalTimeMilli) {

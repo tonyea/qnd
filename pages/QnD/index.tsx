@@ -84,10 +84,26 @@ export const QnDPage: React.FunctionComponent = () => {
         const intervalStartTime = i * seriesTime * 60 * 1000; // in milliseconds
         const setType = i % 2 === 0 ? "one" : "two";
         alertIntervals.push(
-          { intervalTime: intervalStartTime, setType },
-          { intervalTime: intervalStartTime + 30000, setType },
-          { intervalTime: intervalStartTime + 60000, setType },
-          { intervalTime: intervalStartTime + 90000, setType }
+          {
+            intervalTime: intervalStartTime,
+            setType,
+            readyTime: intervalStartTime - 10000,
+          },
+          {
+            intervalTime: intervalStartTime + 30000,
+            setType,
+            readyTime: intervalStartTime + 20000,
+          },
+          {
+            intervalTime: intervalStartTime + 60000,
+            setType,
+            readyTime: intervalStartTime + 50000,
+          },
+          {
+            intervalTime: intervalStartTime + 90000,
+            setType,
+            readyTime: intervalStartTime + 80000,
+          }
         );
       }
     } else if (variant === "ten") {
@@ -95,8 +111,16 @@ export const QnDPage: React.FunctionComponent = () => {
         const intervalStartTime = i * seriesTime * 60 * 1000; // in milliseconds
         const setType = i % 2 === 0 ? "one" : "two";
         alertIntervals.push(
-          { intervalTime: intervalStartTime, setType },
-          { intervalTime: intervalStartTime + 60000, setType }
+          {
+            intervalTime: intervalStartTime,
+            setType,
+            readyTime: intervalStartTime - 10000,
+          },
+          {
+            intervalTime: intervalStartTime + 60000,
+            setType,
+            readyTime: intervalStartTime + 60000,
+          }
         );
       }
     }
