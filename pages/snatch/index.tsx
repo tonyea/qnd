@@ -5,6 +5,7 @@ import { IntervalType, StopWatch } from "../../components/stopwatch";
 import { BottomSheet, ListItem } from "@rneui/themed";
 import { Link } from "@react-navigation/native";
 import { Icon } from "@rneui/themed";
+import { DiceRollModal } from "../../components/diceRollModal";
 
 type Variant = "five" | "ten";
 type Workout = "swing" | "snatch";
@@ -12,6 +13,7 @@ type Workout = "swing" | "snatch";
 export const SnatchPage: React.FunctionComponent = () => {
   console.log("TBDT 100 SnatchPage");
   const [isVisible, setIsVisible] = useState(false);
+  const [diceModalIsVisible, setDiceModalIsVisible] = useState(false);
   const [numberOfSets, setNumberOfSets] = useState(2);
   const [diceRoll, setDiceRoll] = useState(2);
   const [variant, setVariant] = useState<Variant>("five");
@@ -23,6 +25,10 @@ export const SnatchPage: React.FunctionComponent = () => {
     if (diceRoll === 4 || diceRoll === 5) setNumberOfSets(4);
     if (diceRoll === 6) setNumberOfSets(5);
   }, [diceRoll]);
+
+  const toggleDiceModal = () => {
+    setDiceModalIsVisible(!diceModalIsVisible);
+  };
 
   const variantList = [
     {
@@ -122,10 +128,15 @@ export const SnatchPage: React.FunctionComponent = () => {
               name="dice"
               type="font-awesome-5"
               color="white"
-              onPress={() => setDiceRoll(Math.floor(Math.random() * 6) + 1)}
+              onPress={() => setDiceModalIsVisible(true)} // setDiceRoll(Math.floor(Math.random() * 6) + 1)}
             />
           </Link>
         }
+      />
+      <DiceRollModal
+        isVisible={diceModalIsVisible}
+        toggleModal={toggleDiceModal}
+        setRollAmount={setDiceRoll}
       />
       <Text>Series 1 of {numberOfSets}</Text>
       <Text>{`Kettlebell ${workout === "swing" ? "swings" : "snatches"}`}</Text>
