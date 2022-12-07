@@ -128,7 +128,7 @@ export const SnatchPage: React.FunctionComponent = () => {
               name="dice"
               type="font-awesome-5"
               color="white"
-              onPress={() => setDiceModalIsVisible(true)} // setDiceRoll(Math.floor(Math.random() * 6) + 1)}
+              onPress={() => setDiceModalIsVisible(true)}
             />
           </Link>
         }
@@ -137,6 +137,7 @@ export const SnatchPage: React.FunctionComponent = () => {
         isVisible={diceModalIsVisible}
         toggleModal={toggleDiceModal}
         setRollAmount={setDiceRoll}
+        rollAmount={diceRoll}
       />
       <Text>Series 1 of {numberOfSets}</Text>
       <Text>{`Kettlebell ${workout === "swing" ? "swings" : "snatches"}`}</Text>

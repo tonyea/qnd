@@ -1,24 +1,27 @@
+import React, { useCallback, useState } from "react";
 import { Overlay, Button, Text } from "@rneui/themed";
 
 type DiceRollModalProps = {
   toggleModal: () => void;
   isVisible: boolean;
   setRollAmount: (roll: number) => void;
+  rollAmount: number;
 };
 
 export const DiceRollModal: React.FunctionComponent<DiceRollModalProps> = (
   props: DiceRollModalProps
 ) => {
-  const { toggleModal, isVisible } = props;
+  const { toggleModal, isVisible, setRollAmount, rollAmount } = props;
 
-  const diceRoll = () => {
+  const rollTheDie = useCallback(() => {
     console.log("Rolling dice");
-  };
+    setRollAmount(Math.floor(Math.random() * 6) + 1);
+  }, [rollAmount]);
 
   return (
     <Overlay isVisible={isVisible} onBackdropPress={toggleModal}>
-      <Text>Begin roll!</Text>
-      <Button title="Roll" onPress={diceRoll} />
+      <Text>{rollAmount}</Text>
+      <Button title="Roll" onPress={rollTheDie} />
     </Overlay>
   );
 };
