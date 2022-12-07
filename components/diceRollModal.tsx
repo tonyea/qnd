@@ -14,7 +14,6 @@ export const DiceRollModal: React.FunctionComponent<DiceRollModalProps> = (
   const { toggleModal, isVisible, setRollAmount, rollAmount } = props;
 
   const rollTheDie = useCallback(() => {
-    console.log("Rolling dice");
     setRollAmount(Math.floor(Math.random() * 6) + 1);
   }, [rollAmount]);
 

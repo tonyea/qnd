@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { ControlButtons } from "./controlButtons";
 import { Timer } from "./timer";
 import * as Speech from "expo-speech";
@@ -85,7 +85,7 @@ export const StopWatch: React.FunctionComponent<StopWatchProps> = (
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <Timer time={time - delay} totalTime={props.totalTimeMilli} />
       <ControlButtons
         active={isActive}
@@ -98,3 +98,12 @@ export const StopWatch: React.FunctionComponent<StopWatchProps> = (
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    // borderWidth: 2,
+    // borderColor: "blue",
+    // borderStyle: "dashed",
+    flex: 1,
+  },
+});

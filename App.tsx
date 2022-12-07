@@ -56,11 +56,6 @@ export default function App() {
     return null;
   }
 
-  // const getRandomDie = useCallback(() => {
-  //   const randomDie = Math.floor(Math.random() * 6) + 1;
-  //   return randomDie;
-  // }, []);
-
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
@@ -74,9 +69,12 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-between",
+    // borderWidth: 2,
+    // borderColor: "black",
+    // borderStyle: "dashed",
   },
 });

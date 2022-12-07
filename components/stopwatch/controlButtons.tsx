@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { Button } from "@rneui/themed";
 
 interface ControlButtonsProps {
@@ -31,8 +31,17 @@ export const ControlButtons: React.FunctionComponent<ControlButtonsProps> = (
   );
 
   return (
-    <View>
+    <View style={styles.container}>
       <View>{props.active ? ActiveButtons : StartButton}</View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    // borderWidth: 2,
+    // borderColor: "red",
+    // borderStyle: "dashed",
+  },
+});
+

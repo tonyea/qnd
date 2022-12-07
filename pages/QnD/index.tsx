@@ -3,7 +3,6 @@ import { Text, View, StyleSheet } from "react-native";
 import { Header } from "@rneui/themed";
 import { IntervalType, StopWatch } from "../../components/stopwatch";
 import { BottomSheet, ListItem } from "@rneui/themed";
-import { Link } from "@react-navigation/native";
 import { Icon } from "@rneui/themed";
 import { DiceRollModal } from "../../components/diceRollModal";
 
@@ -146,14 +145,12 @@ export const QnDPage: React.FunctionComponent = () => {
           onPress: () => setIsVisible(true),
         }}
         rightComponent={
-          <Link onPress={() => console.log("TEST")} to="">
-            <Icon
-              name="dice"
-              type="font-awesome-5"
-              color="white"
-              onPress={() => setDiceModalIsVisible(true)}
-            />
-          </Link>
+          <Icon
+            name="dice"
+            type="font-awesome-5"
+            color="white"
+            onPress={() => setDiceModalIsVisible(true)}
+          />
         }
       />
       <DiceRollModal
@@ -162,8 +159,7 @@ export const QnDPage: React.FunctionComponent = () => {
         setRollAmount={setDiceRoll}
         rollAmount={diceRoll}
       />
-      <Text>Series 1 of {numberOfSets}</Text>
-      <Text>{`Kettlebell ${
+      <Text style={styles.titleText}>{`Kettlebell ${
         workout === "swing" ? "swings and pushups" : "snatches"
       }`}</Text>
       <StopWatch
@@ -198,9 +194,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   container: {
-    borderWidth: 2,
-    borderColor: "red",
-    borderStyle: "dashed",
+    // borderWidth: 2,
+    // borderColor: "pink",
+    // borderStyle: "dashed",
     height: "100%",
+  },
+  titleText: {
+    textAlign: "center",
+    fontSize: 20
   },
 });
