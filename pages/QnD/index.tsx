@@ -10,8 +10,7 @@ import { DiceRollModal } from "../../components/diceRollModal";
 type Variant = "five" | "ten";
 type Workout = "swing" | "snatch";
 
-export const SnatchPage: React.FunctionComponent = () => {
-  console.log("TBDT 100 SnatchPage");
+export const QnDPage: React.FunctionComponent = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [diceModalIsVisible, setDiceModalIsVisible] = useState(false);
   const [numberOfSets, setNumberOfSets] = useState(2);
@@ -140,12 +139,16 @@ export const SnatchPage: React.FunctionComponent = () => {
         rollAmount={diceRoll}
       />
       <Text>Series 1 of {numberOfSets}</Text>
-      <Text>{`Kettlebell ${workout === "swing" ? "swings" : "snatches"}`}</Text>
+      <Text>{`Kettlebell ${
+        workout === "swing" ? "swings and pushups" : "snatches"
+      }`}</Text>
       <StopWatch
         totalTimeMilli={totalTime()}
         alertTimes={alertTimes()}
         beginSetSpeechOne={`${workout}, ${variant} reps left handed`}
-        beginSetSpeechTwo={`${workout}, ${variant} reps right handed`}
+        beginSetSpeechTwo={`${
+          workout === "swing" ? "pushups" : workout
+        }, ${variant} reps ${workout === "swing" ? "" : "right handed"}`}
       />
       <BottomSheet modalProps={{}} isVisible={isVisible}>
         {variantList.map((l, i) => (

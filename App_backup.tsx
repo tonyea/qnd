@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 import Entypo from "@expo/vector-icons/Entypo";
 import * as SplashScreen from "expo-splash-screen";
 import * as Font from "expo-font";
-import { SnatchPage } from "./pages/snatch";
+import { SnatchPage } from "./pages/QnD";
 import { ThemeProvider, createTheme } from "@rneui/themed";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 

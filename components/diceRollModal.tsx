@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import { Overlay, Button, Text } from "@rneui/themed";
 
 type DiceRollModalProps = {

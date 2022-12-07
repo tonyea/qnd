@@ -1,7 +1,7 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { SnatchPage } from "./pages/snatch";
+import { QnDPage } from "./pages/QnD";
 
 // This type will define all the possible parameters for each route
 export type RootStackParamList = {
@@ -20,7 +20,7 @@ const App = () => {
       >
         <Stack.Screen
           name="Snatch"
-          component={SnatchPage}
+          component={QnDPage}
         />
       </Stack.Navigator>
     </NavigationContainer>
