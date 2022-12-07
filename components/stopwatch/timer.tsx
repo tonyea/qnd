@@ -11,7 +11,7 @@ export const Timer: React.FunctionComponent<TimerProps> = (
 ) => {
   return (
     <View style={styles.container}>
-      <Text>
+      <Text style={styles.timer} adjustsFontSizeToFit={true} numberOfLines={1}>
         {Math.sign(props.time) === 1 &&
           ("0" + Math.floor((props.time / 60000) % 60)).slice(-2) + ":"}
         {("0" + Math.floor((props.time / 1000) % 60)).slice(-2) + "."}
@@ -33,5 +33,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "blue",
     borderStyle: "dashed",
+  },
+  timer: {
+    fontSize: 300,
   },
 });
