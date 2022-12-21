@@ -52,9 +52,9 @@ export const StopWatch: React.FunctionComponent<StopWatchProps> = (
             clearInterval(interval);
             return time;
           }
-          return time + 10;
+          return time + 1000;
         });
-      }, 10);
+      }, 1000);
     } else {
       interval && clearInterval(interval);
     }

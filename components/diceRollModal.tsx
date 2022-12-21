@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
 import { Overlay, Button, Text } from "@rneui/themed";
+import { StyleSheet } from "react-native";
 
 type DiceRollModalProps = {
   toggleModal: () => void;
@@ -19,8 +20,15 @@ export const DiceRollModal: React.FunctionComponent<DiceRollModalProps> = (
 
   return (
     <Overlay isVisible={isVisible} onBackdropPress={toggleModal}>
-      <Text>{rollAmount}</Text>
+      <Text style={styles.dice}>{rollAmount}</Text>
       <Button title="Roll" onPress={rollTheDie} />
     </Overlay>
   );
 };
+
+const styles = StyleSheet.create({
+  dice: {
+    fontSize: 60,
+    textAlign: "center",
+  },
+});

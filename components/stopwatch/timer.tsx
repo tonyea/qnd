@@ -19,7 +19,7 @@ export const Timer: React.FunctionComponent<TimerProps> = (
           adjustsFontSizeToFit={true}
           numberOfLines={1}
         >
-          {("0" + Math.floor((props.time / 60000) % 60)).slice(-2) + ":"}
+          {("0" + Math.floor((props.time / 60000) % 60)).slice(-2)}
         </Text>
       )}
       <Text
@@ -28,13 +28,6 @@ export const Timer: React.FunctionComponent<TimerProps> = (
         numberOfLines={1}
       >
         {("0" + Math.floor((props.time / 1000) % 60)).slice(-2)}
-      </Text>
-      <Text
-        style={styles.timerMilliseconds}
-        adjustsFontSizeToFit={true}
-        numberOfLines={1}
-      >
-        {("0" + ((props.time / 10) % 100)).slice(-2)}
       </Text>
       <Text style={styles.footerText}>
         {""}
@@ -61,7 +54,7 @@ const styles = StyleSheet.create({
     // borderStyle: "dashed",
     fontSize: width,
     textAlign: "center",
-    color:"#30231c",
+    color: "#30231c",
   },
   timerSeconds: {
     flex: 1,
@@ -70,7 +63,7 @@ const styles = StyleSheet.create({
     // borderStyle: "dashed",
     fontSize: width,
     textAlign: "center",
-    color:"#30231c",
+    color: "#30231c",
   },
   timerMilliseconds: {
     flex: 1,
@@ -79,11 +72,11 @@ const styles = StyleSheet.create({
     // borderStyle: "dashed",
     fontSize: width,
     textAlign: "center",
-    color:"#30231c",
+    color: "#30231c",
   },
   footerText: {
     textAlign: "center",
     fontSize: 20,
-    color:"#30231c",
+    color: "#30231c",
   },
 });

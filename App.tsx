@@ -23,6 +23,10 @@ const theme = createTheme({
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
 
+  interface User {
+    verified: boolean;
+  }
+
   useEffect(() => {
     async function prepare() {
       try {
@@ -37,7 +41,6 @@ export default function App() {
         setAppIsReady(true);
       }
     }
-
     prepare();
   }, []);
 

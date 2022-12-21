@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "qnd",
-    "slug": "qnd",
+    "name": "quick-and-dead-workouts",
+    "slug": "quick-and-dead-workouts",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,10 +24,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.anthonyebin.quickanddeadworkouts"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "aa486c12-237d-442d-8711-c383065069fd"
+      }
+    },
+    "owner": "anthonyebin"
   }
 }
